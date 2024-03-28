@@ -1,0 +1,7 @@
+{
+    "name": "C++ Development",
+    "image": "mcr.microsoft.com/vscode/devcontainers/cpp:0-ubuntu-20.04",
+    "forwardPorts": [],
+    "postCreateCommand": "apt-get update && apt-get install -y cmake gdb build-essential",
+    "remoteUser": "vscode"
+}
