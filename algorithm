@@ -1,0 +1,79 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+
+//距離計算
+double calc_dist(double x1, double y1, double x2, double y2){
+    return sqrt( (x1-x2) * (x1-x2) + (y1-y2) * (y1-y2) )
+}
+
+int main(){
+    //最近点問題（全探索）O(N^2)
+    int N; cin >> N;
+    vector<double> x(N), y(N);
+    for(int i = 0; i < N; i++){
+        cin >> x[i] >> y[i];
+    }
+    double minimum_dist = 10000.0;
+
+    for(int i = 0; i < N; i++){
+        for(int j = i + 1; j < N; j++){
+            double dist_i_j = calc_dist(x[i],y[i],x[j],y[j]);
+
+            if(dist_i_j < minimum_dist){
+                minimum_dist = dist_i_j;
+            }
+        }
+    }
+    cout << minimum_dist << endl;
+    //線形探索
+    int M, v;
+    cin >> M >> v;
+    vector<int> a(M);
+    for(int i = 0; i < M; i++) cin >> a[i];
+
+    int found_id = -1;
+    for(int i = 0; i < M; i++){
+        if(a[i] == v){
+            found_id = 1;
+            break;
+        }
+    } 
+    cout << found_id << endl;
+    //全探索，線形探索，ペアの和でK以上の最小値を求める
+    int NY, CA;
+    cin >> NY >> CA;
+    vector<int> us1(NY),us2(CA);
+    for(int i = 0; i < NY; i++) cin >> us1[i];
+    for(int i = 0; i < NY; i++) cin >> us2[i];
+
+    //線形探索を行う
+    int min_value = INF;
+    for(int i = 0; i < NY; i++){
+        for(int j = 0; j < CA; j++){
+            if(min_value > NY[i] + CA[j]) min_value = NY[i] + CA[j];
+        }
+    }
+    cout << min_value << endl;
+
+    
+}
+int l36{
+    int N, W;
+    cin >> N >> W;
+    vector<int> a(N);
+    for(int i = 0; i < N; i++) cin >> a[i];
+
+    bool exist = false;
+    for(int bit = 0; bit < (1 << N); ++bit){
+        int sum = 0;
+        for(int i = 0; i < N; i++){
+            if(bit & (1 << i)){
+                sum += a[i];
+            }
+        }
+        if(sum==W) exist  = true;
+    }
+    
+}
