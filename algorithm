@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<cmath>
+#include<string>
 using namespace std;
 
 //距離計算
@@ -76,4 +77,35 @@ int l36{
         if(sum==W) exist  = true;
     }
     
+}
+int p35{
+    int how_many_times(int N){
+        int exp = 0;
+        while(N % 2 == 0) N /= 2, exp++;
+        return exp;
+    }
+    int result  = INF;
+    for(auto a: A){
+        result = min(result, how_many_times(a));
+}
+int p36{
+    int N,K;
+    cin >> N >> K;
+    int count =  0;
+    for(int x = 0; x <= min(N,K); x++){
+        for(int y = 0; y < min(N,K); y++){
+            int z = N - x - y;
+            if(z >= 0 && z <= K) count++;  
+        }
+    }
+}
+//(ABC 045 C - たくさんの数式
+int p37{
+    string S;
+    cin >> S;
+    int N = S.size();
+
+    long long res = 0;
+
+    for(int bit = 0; bit < (1<<(N-1)))
 }
